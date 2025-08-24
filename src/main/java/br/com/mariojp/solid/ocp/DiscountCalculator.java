@@ -7,8 +7,12 @@ public class DiscountCalculator {
 	private final Map<CustomerType, DiscountPolicy> policies; //A chave - CostumerType é o tipo de cliente que já está no ENUM(mesmo pacote).
 	// já o DiscountPolicy é a política referente a aquele tipo de cliente
 	
-	  public DiscountCalculator(Map<CustomerType, DiscountPolicy> policies) { // dentro do método há a instância do map das políticas de desconto
-	        this.policies = policies; //construtor do calculador de desconto
+	 public DiscountCalculator() {
+	        this.policies = Map.of(
+	            CustomerType.REGULAR, new RegularPolicy(),
+	            CustomerType.PREMIUM, new PremiumPolicy(), //a chave de cada política é o tipo, e o valor são as classes que implementam a interface discountPolicy.
+	            CustomerType.PARTNER, new PartnerPolicy() // em cada classe haverá um método específico p calculo
+	        );
 	    }
 
     public double apply(double amount, CustomerType type){
