@@ -12,9 +12,9 @@ public class DiscountCalculator {
 	    }
 
     public double apply(double amount, CustomerType type){
-    DiscountPolicy policy = policies.get(type); //
+    DiscountPolicy policy = policies.get(type); //resgata o tipo de cada política segundo o tipo de cliente.
 	
-    if (policy == null) {
+    if (policy == null) { //se não há uma política mapeada, retorna a quantia de dinheiro original
     	return amount;
     }
     return policy.apply(amount); //retorna o método referente ao tipo da política do cliente. 
